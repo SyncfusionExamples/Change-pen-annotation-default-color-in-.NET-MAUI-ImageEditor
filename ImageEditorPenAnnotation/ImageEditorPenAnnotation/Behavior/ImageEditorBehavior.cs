@@ -4,7 +4,7 @@ namespace ImageEditorPenAnnotation
 {
     public class ImageEditorBehavior : Behavior<ContentPage>
     {
-        SfImageEditor editor;
+        private SfImageEditor? editor;
 
         protected override void OnAttachedTo(ContentPage bindable)
         {
@@ -25,9 +25,9 @@ namespace ImageEditorPenAnnotation
         protected override void OnDetachingFrom(ContentPage bindable)
         {
             base.OnDetachingFrom(bindable);
-            this.editor.AnnotationSelected -= Editor_AnnotationSelected;
             if (editor != null)
             {
+                this.editor.AnnotationSelected -= Editor_AnnotationSelected;
                 this.editor = null;
             }
         }
